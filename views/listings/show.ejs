@@ -1,0 +1,40 @@
+<% layout("/layout/boilerplate.ejs") %>
+
+  
+        <div class="col-8 offset-3">
+          <h1>Listing details:</h1>
+        </div>
+     <div class="col-6 offset-3">
+      <div class="card">
+        <img src="<%= listings.image %>" class="card-img-top show-image" alt="listing_image">
+       <div class="card-body">
+        <p class="card-text"><%= listings.title %></p>
+        </div>
+      </div>
+    <ul>
+       <b> <li> <%= listings.title %> </li></b>
+        <li> <%= listings.description %> </li>
+        <li> &#8377; <%= listings.price.toLocaleString("en-IN")  %> </li>
+        <li> <%= listings.location%> </li>
+        <li> <%= listings.country %> </li>
+    </ul>
+    <div class="col-1">
+      <button class="btn btn-dark edit-btn"><a href="/listings/<%= listings._id %>/edit" style="color: antiquewhite;">Edit</a></button>
+      <br>
+      <br>
+      <form  method="post" action="/listings/<%= listings._id %>?_method=DELETE" onclick="return delalert()">
+             <button class="btn btn-dark">Delete</button>
+            <br>
+            <br>
+        </form>
+    </div>
+    <br>
+    <br>
+    
+    
+    <script>
+      function delalert(){
+        return confirm("Are you sure you want to delete this listing?");
+      }
+    </script>
+</body>
