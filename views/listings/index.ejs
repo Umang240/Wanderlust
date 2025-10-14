@@ -1,0 +1,100 @@
+<% layout("/layout/boilerplate.ejs") %>
+<br>
+<br>
+
+<!-- Category Icons Bar -->
+<div class="listing-categories d-flex justify-content-center gap-4 mb-4">
+<span class="filters">
+    <div><i class="fa-solid fa-fire fs-4 mb-1"></i></div>
+    <p>Trending</p>
+</span>
+<span class="filters">
+    <div><i class="fa-solid fa-bed fs-4 mb-1"></i></div>
+    <p>Rooms</p>
+</span>
+<span class="filters">
+    <div><i class="fa-solid fa-mountain-sun fs-4 mb-1"></i></div>
+    <p>Mountains</p>
+</span>
+<span class="filters">
+    <div><i class="fa-solid fa-people-group fs-4 mb-1"></i></div>
+    <p>Family</p>
+</span>
+<span class="filters">
+    <div><i class="fa-solid fa-briefcase fs-4 mb-1"></i></div>
+    <p>Buisness Stay</p>
+</span>
+<span class="filters">
+    <div><i class="fa-solid fa-swimmer fs-4 mb-1"></i></div>
+    <p>Swimming pool</p>
+</span>
+<span class="filters">
+    <div><i class="fa-solid fa-tree fs-4 mb-1"></i></div>
+    <p>Forest</p>
+</span>
+<span class="filters">
+    <div><i class="fa-solid fa-sailboat fs-4 mb-1"></i></div>
+    <p>Boating</p>
+</span>
+<span class="filters">
+    <div><i class="fa-solid fa-umbrella-beach fs-4 mb-1"></i></div>
+    <p>Beach</p>
+</span>
+
+<div class="custom-toggle">
+  <div class="form-check-reverse form-switch ">
+    <input class="form-check-input" type="checkbox" role="switch" id="switchCheckChecked"
+      checked aria-checked="true" aria-label="Display total after taxes">
+    <label class="form-check-label" for="switchCheckChecked">Display total after taxes</label>
+  </div>
+</div>
+
+</div>
+
+<div class="row row-cols-lg-3">
+    <%for(listing of allistings ) {%>
+        <a href="/listings/<%= listing._id %>" class="listing-link">
+        <div class="card col listing-card" >
+          <img src="<%= listing.image.url %>" class="card-img-top" alt="...">
+          <div class="card-img-overlay"></div>
+            <div class="card-body">
+               <p class="card-text">
+                  <b><%=listing.title %></b> <br>
+                  <b>&#8377; <%= listing.price  %>/ night</b>
+                  <i class="info-tax">&nbsp; &nbsp; +18% GST</i>
+               </p>
+            </div>
+        </div>
+        <br>
+        <br>
+        </a>
+    <% } %>
+</div>
+
+<script>
+  let taxSwitch = document.getElementById("switchCheckChecked");
+  taxSwitch.addEventListener("click", () => {
+    let taxinfo = document.getElementsByClassName("info-tax");
+    for(let info of taxinfo){
+      info.style.display = taxSwitch.checked ? "inline" : "none";
+    }
+  });
+  // Initialize display on page load
+  window.addEventListener("DOMContentLoaded", () => {
+    let taxinfo = document.getElementsByClassName("info-tax");
+    for(let info of taxinfo){
+      info.style.display = taxSwitch.checked ? "inline" : "none";
+    }
+  });
+</script>
+
+<style>
+    body{
+        background-color:lightblue;
+    }
+    .h1{
+        font-style:initial;
+    }
+</style>
+
+</body>

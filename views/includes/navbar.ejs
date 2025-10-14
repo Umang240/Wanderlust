@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-md bg-white border-bottom shadow-lg sticky-top rounded-bottom">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold text-primary fs-3" href="/">
+      <i class="fa-solid fa-location-arrow me-2"></i>Wanderlust
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav me-auto gap-2">
+        <a class="nav-link active fw-semibold" href="/home">Home</a>
+        <a class="nav-link fw-semibold" href="/listings">Explore</a>
+      </div>
+
+      <!-- Search bar directly in navbar, flex aligned -->
+      <form class="d-flex align-items-center mx-3" role="search" action="/listings/search" method="GET">
+        <input class="form-control me-2 search-inp" type="search" name="q" placeholder="Search your destination" aria-label="Search"/>
+        <button class="btn search-btn d-flex align-items-center" type="submit">
+        <i class="fa-solid fa-magnifying-glass me-1"></i>Search
+        </button>
+      </form>
+
+      <div class="list">
+        <a class="nav-link fw-semibold list-link" href="/listings/new">List your space</a>
+      </div>
+
+      <!-- Auth Dropdown -->
+      <div class="dropdown ms-2">
+        <button class="btn btn-outline-secondary dropdown-toggle fw-semibold px-3" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Account
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <% if (!currentUser) { %>
+            <li><a class="dropdown-item" href="/signup">Sign Up</a></li>
+            <li><a class="dropdown-item" href="/login">Login</a></li>
+          <% } else { %>
+            <li><a class="dropdown-item" href="/profile">Welcome, <%= currentUser.username %></a></li>
+            <li>
+              <form action="/logout" method="get" class="dropdown-item p-0 m-0">
+                <button class="btn w-100 text-start">Logout</button>
+              </form>
+            </li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,60 @@
+<% layout("/layout/boilerplate.ejs") %>
+    <div class="row">
+        <div class="col-8 offset-2">
+    <h1>Create your new listing</h1>
+    <form method="post" 
+      action="/listings"
+      novalidate
+      class="needs-validation"
+      enctype="multipart/form-data">
+       
+        <div class="mb-3">
+         <b><label for="title" class="form-label">Title</label></b>
+          <input name="listing[title]" type="text" class="form-control" placeholder="Add title" 
+          required/>
+          <div class="invalid-feedback">Title is required.</div>
+        </div>
+        
+        <div class="mb-3">
+         <b><label for="description" class="form-label">Description</label></b>
+         <textarea name="listing[description]" class="form-control" required placeholder="Add your description"></textarea>
+         <div class="invalid-feedback">Description is required.</div>
+        </div>
+         
+        <div class="mb-3">
+            <b><label for="image" class="form-label">Image</label></b>
+            <input name="listing[image]" type="file" class="form-control" placeholder="Add image url"/>
+        </div>
+        
+        <div class="mb-3">
+            <b><label for="price" class="form-label" required>Price</label></b>
+            <input name="listing[price]" class="form-control"  placeholder="Add price" required/>
+            <div class="invalid-feedback">Enter valid price.</div>
+        </div>
+
+        <div class="row">
+        <div class="mb-3 col-4">
+            <b><label for="location" class="form-label" required>Location</label></b>
+            <input name="listing[location]" class="form-control" type="text" placeholder="Add location" required/>
+            <div class="invalid-feedback">location is required.</div>
+        </div>
+        <div class="mb-3 col-4">
+            <b><label for="country" class="form-label" required>Country</label></b>
+            <input name="listing[country]" class="form-control" type="text" placeholder="Add country" required/>
+            <div class="invalid-feedback">Country is required.</div>
+        </div>
+        <div class="mb-3 col-4">
+            <b><label for="mapUrl" class="form-label">Google Maps URL</label></b>
+            <input name="listing[mapUrl]" class="form-control" type="url" placeholder="Paste Google Maps link (optional)"/>
+            <div class="form-text">Optional: Paste a Google Maps URL for this location.</div>
+        </div>
+        </div>
+        
+        <button class="btn btn-success">Create</button>
+        <br>
+        <br>
+    </form>
+    </div>
+    </div>
+
+</body>
